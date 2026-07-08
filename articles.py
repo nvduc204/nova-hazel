@@ -54,7 +54,8 @@ def take_articles(n, url):
             articles = data["articles"]
             nums_of_articles=len(articles)
             
-    print("\nDone")
+    print("\nCheck data/ to see")
+    print("Done")
 
 
 
