@@ -3,6 +3,14 @@ __pycache__/
 *.py[codz]
 *$py.class
 data/
+metadata.json
+file_search_store_name.txt
+scrape.py
+upload_gemini.py
+clear_store.py
+test.py
+
+
 # C extensions
 *.so
 
