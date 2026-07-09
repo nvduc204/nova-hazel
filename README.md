@@ -13,7 +13,7 @@ pip install -r requirements.txt
 2. Create a `.env` file:
 
 ```env
-GOOGLE_API_KEY=your_google_api_key
+GEMINI_API_KEY=your_google_api_key
 ```
 
 ## Run Locally
@@ -22,9 +22,16 @@ GOOGLE_API_KEY=your_google_api_key
 python main.py
 ```
 
+## Run with Docker
+
+```bash
+docker build -t optisigns-daily-sync .
+docker run --rm --env-file .env optisigns-daily-sync
+```
+
 ## Daily Job Logs
 
-Deployment: **<Railway / Render / DigitalOcean / GitHub Actions>**
+Deployment: **<GitHub Actions>**
 
 Logs: **<Paste your job log URL here>**
 
@@ -37,4 +44,3 @@ Question:
 Screenshot:
 
 ![Assistant Demo](docs/demo.png)
-

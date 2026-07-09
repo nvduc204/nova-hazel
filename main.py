@@ -10,7 +10,7 @@ from google import genai
 
 load_dotenv()
 
-API_KEY = os.getenv("GOOGLE_API_KEY") or os.getenv("API_KEY")
+API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("API_KEY")
 if not API_KEY:
     raise ValueError("API_KEY not set in environment")
 
@@ -131,8 +131,7 @@ def upload_delta(articles_data, store_name):
             operation = client.file_search_stores.upload_to_file_search_store(
                 file=filepath,
                 file_search_store_name=store_name,
-                config={"display_name": title_slug},
-                mime_type="text/markdown"
+                config={"display_name": title_slug}
             )
             while not operation.done:
                 time.sleep(2)
