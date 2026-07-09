@@ -3,7 +3,7 @@ name: Daily Sync
 on:
   schedule:
     - cron: '0 2 * * *'  # 2:00 AM mỗi ngày
-  workflow_dispatch:     # Cho phép chạy thủ công
+  workflow_dispatch:     
 
 jobs:
   sync:
