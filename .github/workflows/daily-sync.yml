@@ -14,4 +14,4 @@ jobs:
       - name: Build and run Docker container
         run: |
           docker build -t optisigns-daily-sync .
-          docker run --rm -e GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY }} optisigns-daily-sync
+          docker run --rm -e GOOGLE_API_KEY=${{ secrets.GEMINI_API_KEY }} optisigns-daily-sync
