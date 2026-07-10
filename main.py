@@ -131,11 +131,14 @@ def upload_delta(articles_data, store_name):
             operation = client.file_search_stores.upload_to_file_search_store(
                 file=filepath,
                 file_search_store_name=store_name,
-                config={"display_name": title_slug}
+                config={"display_name": title_slug,
+                "mime_type":"text/markdown"},
             )
             while not operation.done:
                 time.sleep(2)
                 operation = client.operations.get(operation)
+                print("loading...")
+
             
             uploaded += 1
             print(f"  [{idx}/{total}] Upload thanh cong: {title}")
