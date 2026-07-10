@@ -96,7 +96,7 @@ def scrape_articles(n, url):
         y += 1
         i += 1
         
-        if y >= 30 and data.get("next_page"):
+        if y >= 30 and data.get("next_page") and i<n:
             y = 0
             url = data["next_page"]
             response = requests.get(url)
@@ -104,7 +104,7 @@ def scrape_articles(n, url):
             articles = data["articles"]
             nums_of_articles = len(articles)
     
-    print("\nDa scrape xong")
+    print("\nDa scrape xong\n", flush=True)
     return articles_data
 
 def upload_delta(articles_data, store_name):
@@ -123,7 +123,7 @@ def upload_delta(articles_data, store_name):
         if title_slug in metadata:
             stored_hash = metadata[title_slug].get("hash")
             if stored_hash == current_hash:
-                print(f"  [{idx}/{total}] Bo qua (khong thay doi): {title}")
+                print(f"  [{idx}/{total}] Bo qua (khong thay doi): {title}", flush=True)
                 continue
         
         filepath = write_to_file(title, title_slug, content, url)
@@ -137,11 +137,9 @@ def upload_delta(articles_data, store_name):
             while not operation.done:
                 time.sleep(2)
                 operation = client.operations.get(operation)
-                print("loading...")
-
-            
+                
             uploaded += 1
-            print(f"  [{idx}/{total}] Upload thanh cong: {title}")
+            print(f"  [{idx}/{total}] Upload thanh cong: {title}", flush=True)
             
             metadata[title_slug] = {
                 "hash": current_hash,
@@ -178,7 +176,7 @@ def main():
         print("Khong co bai viet nao duoc scrape.")
         return
     
-    print("Dang upload delta (chi bai moi/thay doi)...")
+    print("Dang upload delta (chi bai moi/thay doi)...", flush=True)
     uploaded, failed, total = upload_delta(articles, store_name)
     
     store_info = client.file_search_stores.get(name=store_name)
